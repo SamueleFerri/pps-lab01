@@ -57,4 +57,11 @@ class SimpleBankAccountTest {
         bankAccount.withdraw(notExistingAccountHolderId, amount);
         assertEquals(100, bankAccount.getBalance());
     }
+
+    @Test
+    void testNegativeBalanceAfterWithDraw(){
+        bankAccount.deposit(accountHolder.id(), amount);
+        bankAccount.withdraw(accountHolder.id(), amount);
+        assertEquals(100, bankAccount.getBalance());
+    }
 }
