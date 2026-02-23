@@ -3,9 +3,12 @@ package tdd;
 public class SimpleSmartDoorLock implements SmartDoorLock{
     private static final int MAX_DOOR_PIN = 9999;
     private static final int MIN_DOOR_PIN = 999;
+    private static final int MAX_FAILED_ATTEMPTS = 3;
     private boolean isPinSet = false;
     private boolean locked;
     private int doorPin;
+    private int failedAttempts = 0;
+    private boolean isBlocked = false;
 
     @Override
     public void setPin(int pin) {
@@ -19,7 +22,16 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
-
+        if(locked && isPinSet){
+            if(pin == doorPin){
+                this.locked = false;
+                this.failedAttempts = 0;
+            } else if (failedAttempts < MAX_FAILED_ATTEMPTS) {
+                this.failedAttempts++;
+            }else {
+                this.isBlocked = true;
+            }
+        }
     }
 
     @Override

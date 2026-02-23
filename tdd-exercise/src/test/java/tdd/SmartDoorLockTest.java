@@ -26,4 +26,12 @@ public class SmartDoorLockTest {
         assertTrue(smartDoor.isLocked());
     }
 
+    @Test
+    public void doorCanBeUnlockedWithThePin(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(doorPin);
+        assertFalse(smartDoor.isLocked());
+    }
+
 }
