@@ -43,4 +43,13 @@ public class SmartDoorLockTest {
         assertTrue(smartDoor.isLocked());
     }
 
+    @Test
+    public void doorCanBeBlocked(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        assertTrue(smartDoor.isBlocked());
+    }
 }

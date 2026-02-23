@@ -22,7 +22,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
-        if(locked && isPinSet){
+        if(locked && !isBlocked){
             if(pin == doorPin){
                 this.locked = false;
                 this.failedAttempts = 0;
@@ -33,9 +33,8 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
     }
 
     private void checkFailedAttempts(){
-        if (failedAttempts < MAX_FAILED_ATTEMPTS) {
-            this.failedAttempts++;
-        }else {
+        this.failedAttempts++;
+        if(failedAttempts == MAX_FAILED_ATTEMPTS){
             this.isBlocked = true;
         }
     }
@@ -56,7 +55,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
 
     @Override
     public boolean isBlocked() {
-        return false;
+        return this.isBlocked;
     }
 
     @Override
