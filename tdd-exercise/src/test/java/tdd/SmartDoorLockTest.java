@@ -1,13 +1,29 @@
 package tdd;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
+    int doorPin = 1234;
+    SimpleSmartDoorLock smartDoor;
+
+    @BeforeEach
+    void beforeEach(){
+        smartDoor = new SimpleSmartDoorLock();
+    }
+
     @Test
     public void isTheDoorLocked() {
-        SimpleSmartDoorLock smartDoor = new SimpleSmartDoorLock();
+        assertFalse(smartDoor.isLocked());
+    }
+
+    @Test
+    public void testTheDoorSetPin(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
         assertTrue(smartDoor.isLocked());
     }
+
 }
