@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
     int doorPin = 1234;
+    int wrongPin = 2345;
     SimpleSmartDoorLock smartDoor;
 
     @BeforeEach
@@ -32,6 +33,14 @@ public class SmartDoorLockTest {
         smartDoor.lock();
         smartDoor.unlock(doorPin);
         assertFalse(smartDoor.isLocked());
+    }
+
+    @Test
+    public void doorCantBeUnlockedWithTheWrongPin(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(wrongPin);
+        assertTrue(smartDoor.isLocked());
     }
 
 }

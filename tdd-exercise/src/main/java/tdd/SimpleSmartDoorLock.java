@@ -26,11 +26,17 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
             if(pin == doorPin){
                 this.locked = false;
                 this.failedAttempts = 0;
-            } else if (failedAttempts < MAX_FAILED_ATTEMPTS) {
-                this.failedAttempts++;
-            }else {
-                this.isBlocked = true;
+            } else {
+                checkFailedAttempts();
             }
+        }
+    }
+
+    private void checkFailedAttempts(){
+        if (failedAttempts < MAX_FAILED_ATTEMPTS) {
+            this.failedAttempts++;
+        }else {
+            this.isBlocked = true;
         }
     }
 
