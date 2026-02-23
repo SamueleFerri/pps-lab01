@@ -59,7 +59,7 @@ class SimpleBankAccountTest {
     }
 
     @Test
-    void testNegativeBalanceAfterWithDraw(){
+    void testNotAllowedWithDraw(){
         bankAccount.deposit(accountHolder.id(), amount);
         bankAccount.withdraw(accountHolder.id(), amount);
         assertEquals(100, bankAccount.getBalance());
