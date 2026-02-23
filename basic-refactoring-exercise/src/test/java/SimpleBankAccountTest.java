@@ -15,6 +15,7 @@ class SimpleBankAccountTest {
     private BankAccount bankAccount;
     private double amount;
     private int notExistingAccountHolderId;
+    private static final int WITHDRAWALFEE = 1;
 
     @BeforeEach
     void beforeEach(){
@@ -47,7 +48,7 @@ class SimpleBankAccountTest {
         bankAccount.deposit(accountHolder.id(), amount);
         amount = 70;
         bankAccount.withdraw(accountHolder.id(), amount);
-        assertEquals(30, bankAccount.getBalance());
+        assertEquals(30 - WITHDRAWALFEE, bankAccount.getBalance());
     }
 
     @Test
