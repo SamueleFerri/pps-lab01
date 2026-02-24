@@ -48,4 +48,10 @@ class MinMaxStackImplTest {
         removeAllElementsFromTheStack();
         assertThrows(IllegalStateException.class, () -> stack.peek());
     }
+
+    @Test
+    public void cannotPopFromEmptyStack(){
+        removeAllElementsFromTheStack();
+        assertThrows(IllegalStateException.class, () -> stack.pop());
+    }
 }

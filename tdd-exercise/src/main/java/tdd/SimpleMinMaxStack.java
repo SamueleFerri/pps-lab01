@@ -13,6 +13,9 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public int pop() {
+        if(stack.isEmpty()){
+            throw new IllegalStateException("The stack is empty");
+        }
         int removedElement = stack.remove(stack.size()-1);
         return removedElement;
     }
