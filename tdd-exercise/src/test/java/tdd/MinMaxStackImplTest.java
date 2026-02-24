@@ -42,4 +42,10 @@ class MinMaxStackImplTest {
         removeAllElementsFromTheStack();
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void cannotPeekFromEmptyStack(){
+        removeAllElementsFromTheStack();
+        assertThrows(IllegalStateException.class, () -> stack.peek());
+    }
 }
