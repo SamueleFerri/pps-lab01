@@ -78,4 +78,11 @@ public class SmartDoorLockTest {
         assertEquals(3, smartDoor.getMaxAttempts());
         assertEquals(0, smartDoor.getFailedAttempts());
     }
+
+    @Test
+    public void thePinCannotBeSetWithTheDoorClosed(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        assertThrows(IllegalStateException.class, () -> smartDoor.setPin(doorPin));
+    }
 }

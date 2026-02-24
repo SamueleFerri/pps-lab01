@@ -17,6 +17,8 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
                 this.doorPin = pin;
                 this.isPinSet = true;
             }
+        }else{
+            throw new IllegalStateException();
         }
     }
 
