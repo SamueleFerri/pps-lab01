@@ -17,4 +17,11 @@ class MinMaxStackImplTest {
     public void checkIfTheStackHasThreeElements(){
         assertEquals(3, stack.size());
     }
+
+    @Test
+    public void pushInTheStack(){
+        int num = 4;
+        stack.push(num);
+        assertEquals(num, stack.peek());
+    }
 }

@@ -2,12 +2,13 @@ package tdd;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SimpleMinMaxStack implements MinMaxStack{
-    int[] stack = new int[]{1,2,3};
+    List<Integer> stack = new ArrayList<>(List.of(1,2,3));
 
     public void push(int value) {
-
+        stack.add(value);
     }
 
     @Override
@@ -17,7 +18,10 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public int peek() {
-        return 0;
+        if(stack.isEmpty()){
+            throw new IllegalStateException("The stack is empty");
+        }
+        return stack.get(stack.size()-1);
     }
 
     @Override
@@ -37,6 +41,6 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public int size() {
-        return stack.length;
+        return stack.size();
     }
 }
