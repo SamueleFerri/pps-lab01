@@ -54,4 +54,11 @@ class MinMaxStackImplTest {
         removeAllElementsFromTheStack();
         assertThrows(IllegalStateException.class, () -> stack.pop());
     }
+
+    @Test
+    public void shouldGetMaxOfTheStack(){
+        int max = 999;
+        stack.push(max);
+        assertEquals(max, stack.getMax());
+    }
 }

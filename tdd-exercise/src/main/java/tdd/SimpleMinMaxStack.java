@@ -35,7 +35,10 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public int getMax() {
-        return 0;
+        return stack.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElseThrow();
     }
 
     @Override
