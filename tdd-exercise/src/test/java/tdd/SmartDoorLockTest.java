@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SmartDoorLockTest {
     int doorPin = 1234;
     int wrongPin = 2345;
+
     SimpleSmartDoorLock smartDoor;
 
     @BeforeEach
@@ -20,36 +21,42 @@ public class SmartDoorLockTest {
         assertFalse(smartDoor.isLocked());
     }
 
-    @Test
-    public void testTheDoorSetPin(){
+    private void setPinAndLockTheDoor(){
         smartDoor.setPin(doorPin);
         smartDoor.lock();
+    }
+
+    @Test
+    public void testTheDoorSetPin(){
+        setPinAndLockTheDoor();
         assertTrue(smartDoor.isLocked());
     }
 
     @Test
     public void doorCanBeUnlockedWithThePin(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
+        setPinAndLockTheDoor();
         smartDoor.unlock(doorPin);
         assertFalse(smartDoor.isLocked());
     }
 
     @Test
     public void doorCantBeUnlockedWithTheWrongPin(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
+        setPinAndLockTheDoor();
         smartDoor.unlock(wrongPin);
         assertTrue(smartDoor.isLocked());
     }
 
+    private void blockTheDoor(){
+        int maxAttempts = smartDoor.getMaxAttempts();
+        for (int i = 0; i < maxAttempts; i++) {
+            smartDoor.unlock(wrongPin);
+        }
+    }
+
     @Test
     public void doorCanBeBlocked(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
+        setPinAndLockTheDoor();
+        blockTheDoor();
         assertTrue(smartDoor.isBlocked());
     }
 
@@ -60,19 +67,15 @@ public class SmartDoorLockTest {
 
     @Test
     public void theNumberOfFailedAttempts(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
+        setPinAndLockTheDoor();
         smartDoor.unlock(wrongPin);
         assertEquals(1, smartDoor.getFailedAttempts());
     }
 
     @Test
     public void theDoorCanBeResetAfterBlockStatement(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
+        setPinAndLockTheDoor();
+        blockTheDoor();
         smartDoor.reset();
         assertFalse(smartDoor.isLocked());
         assertEquals(3, smartDoor.getMaxAttempts());
@@ -81,18 +84,14 @@ public class SmartDoorLockTest {
 
     @Test
     public void thePinCannotBeSetWithTheDoorClosed(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
+        setPinAndLockTheDoor();
         assertThrows(IllegalStateException.class, () -> smartDoor.setPin(doorPin));
     }
 
     @Test
     public void inTheBlockStatementTheDoorCannotBeOpened(){
-        smartDoor.setPin(doorPin);
-        smartDoor.lock();
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
-        smartDoor.unlock(wrongPin);
+        setPinAndLockTheDoor();
+        blockTheDoor();
         assertThrows(IllegalStateException.class, () -> smartDoor.unlock(doorPin));
     }
 }

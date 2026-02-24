@@ -38,7 +38,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
 
     private void checkFailedAttempts(){
         this.failedAttempts++;
-        if(failedAttempts == MAX_FAILED_ATTEMPTS){
+        if(failedAttempts >= MAX_FAILED_ATTEMPTS){
             this.isBlocked = true;
         }
     }
