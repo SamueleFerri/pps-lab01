@@ -3,6 +3,8 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
@@ -60,5 +62,11 @@ class MinMaxStackImplTest {
         int max = 999;
         stack.push(max);
         assertEquals(max, stack.getMax());
+    }
+
+    @Test
+    public void cannotGetTheMaxOfTheStackIfEmpty(){
+        removeAllElementsFromTheStack();
+        assertThrows(NoSuchElementException.class, ()->stack.getMax());
     }
 }
