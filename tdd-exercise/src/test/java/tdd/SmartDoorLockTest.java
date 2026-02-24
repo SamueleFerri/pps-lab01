@@ -85,4 +85,14 @@ public class SmartDoorLockTest {
         smartDoor.lock();
         assertThrows(IllegalStateException.class, () -> smartDoor.setPin(doorPin));
     }
+
+    @Test
+    public void inTheBlockStatementTheDoorCannotBeOpened(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        assertThrows(IllegalStateException.class, () -> smartDoor.unlock(doorPin));
+    }
 }

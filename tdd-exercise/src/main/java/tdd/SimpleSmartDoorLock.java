@@ -31,6 +31,8 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
             } else {
                 checkFailedAttempts();
             }
+        }else{
+            throw new IllegalStateException();
         }
     }
 
