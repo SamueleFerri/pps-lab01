@@ -6,7 +6,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
     private static final int MAX_FAILED_ATTEMPTS = 3;
     private boolean isPinSet = false;
     private boolean locked;
-    private int doorPin;
+    private int doorPin = 0;
     private int failedAttempts = 0;
     private boolean isBlocked = false;
 
@@ -60,16 +60,22 @@ public class SimpleSmartDoorLock implements SmartDoorLock{
 
     @Override
     public int getMaxAttempts() {
-        return 0;
+        return MAX_FAILED_ATTEMPTS - this.failedAttempts;
     }
 
     @Override
     public int getFailedAttempts() {
-        return 0;
+        return this.failedAttempts;
     }
 
     @Override
     public void reset() {
-
+        if(this.isBlocked){
+            doorPin = 0;
+            this.isPinSet = false;
+            this.failedAttempts = 0;
+            this.isBlocked = false;
+            this.locked = false;
+        }
     }
 }

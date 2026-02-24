@@ -52,4 +52,30 @@ public class SmartDoorLockTest {
         smartDoor.unlock(wrongPin);
         assertTrue(smartDoor.isBlocked());
     }
+
+    @Test
+    public void doorMaxAttemptsBeforeBlockStatement(){
+        assertEquals(3, smartDoor.getMaxAttempts());
+    }
+
+    @Test
+    public void theNumberOfFailedAttempts(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(wrongPin);
+        assertEquals(1, smartDoor.getFailedAttempts());
+    }
+
+    @Test
+    public void theDoorCanBeResetAfterBlockStatement(){
+        smartDoor.setPin(doorPin);
+        smartDoor.lock();
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        smartDoor.unlock(wrongPin);
+        smartDoor.reset();
+        assertFalse(smartDoor.isLocked());
+        assertEquals(3, smartDoor.getMaxAttempts());
+        assertEquals(0, smartDoor.getFailedAttempts());
+    }
 }
