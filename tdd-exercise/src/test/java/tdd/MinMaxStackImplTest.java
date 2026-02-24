@@ -29,4 +29,17 @@ class MinMaxStackImplTest {
     public void popFromTheStack(){
         assertEquals(3, stack.pop());
     }
+
+    private void removeAllElementsFromTheStack(){
+        int stackSize = stack.size();
+        for(int i = 0; i < stackSize; i++){
+            stack.pop();
+        }
+    }
+
+    @Test
+    public void stackShouldBeEmpty(){
+        removeAllElementsFromTheStack();
+        assertTrue(stack.isEmpty());
+    }
 }

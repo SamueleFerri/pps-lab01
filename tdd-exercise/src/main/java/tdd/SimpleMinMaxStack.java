@@ -37,7 +37,7 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return stack.size() == 0;
     }
 
     @Override
