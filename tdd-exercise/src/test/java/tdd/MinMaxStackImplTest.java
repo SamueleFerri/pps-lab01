@@ -69,4 +69,17 @@ class MinMaxStackImplTest {
         removeAllElementsFromTheStack();
         assertThrows(NoSuchElementException.class, ()->stack.getMax());
     }
+
+    @Test
+    public void shouldGetMinOfTheStack(){
+        int min = -999;
+        stack.push(min);
+        assertEquals(min, stack.getMin());
+    }
+
+    @Test
+    public void cannotGetTheMinOfTheStackIfEmpty(){
+        removeAllElementsFromTheStack();
+        assertThrows(NoSuchElementException.class, ()->stack.getMin());
+    }
 }
