@@ -5,11 +5,12 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="temurin-17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../../../../../Università/Magistrale/Paradigmi di Programmazione e Sviluppo/PPS Lab/pps-lab01" />
-            <option value="$PROJECT_DIR$/../../../../../Università/Magistrale/Paradigmi di Programmazione e Sviluppo/PPS Lab/pps-lab01/basic-refactoring-exercise" />
-            <option value="$PROJECT_DIR$/../../../../../Università/Magistrale/Paradigmi di Programmazione e Sviluppo/PPS Lab/pps-lab01/tdd-exercise" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/basic-refactoring-exercise" />
+            <option value="$PROJECT_DIR$/tdd-exercise" />
           </set>
         </option>
       </GradleProjectSettings>
