@@ -24,4 +24,9 @@ class MinMaxStackImplTest {
         stack.push(num);
         assertEquals(num, stack.peek());
     }
+
+    @Test
+    public void popFromTheStack(){
+        assertEquals(3, stack.pop());
+    }
 }

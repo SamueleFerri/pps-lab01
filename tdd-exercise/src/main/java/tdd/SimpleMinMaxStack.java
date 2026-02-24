@@ -13,7 +13,8 @@ public class SimpleMinMaxStack implements MinMaxStack{
 
     @Override
     public int pop() {
-        return 0;
+        int removedElement = stack.remove(stack.size()-1);
+        return removedElement;
     }
 
     @Override
