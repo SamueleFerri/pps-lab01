@@ -22,4 +22,6 @@ public interface CircularQueue {
     void remove();
 
     int getFirst();
+
+    int size();
 }

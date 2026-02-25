@@ -10,6 +10,9 @@ public class SimpleCircularQueue implements CircularQueue{
 
     @Override
     public void add(int number) {
+        if(circularQueue.size() >= 3){
+            remove();
+        }
         circularQueue.add(number);
     }
 
@@ -29,5 +32,10 @@ public class SimpleCircularQueue implements CircularQueue{
     @Override
     public int getFirst() {
         return circularQueue.get(START_INDEX_OF_CIRCULAR_QUEUE);
+    }
+
+    @Override
+    public int size() {
+        return circularQueue.size();
     }
 }

@@ -3,14 +3,14 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The test suite for testing the CircularList implementation
  */
 public class CircularListTest {
     SimpleCircularQueue circularQueue;
+    private final static int MAX_LENGTH = 3;
 
     @BeforeEach
     void beforeEach(){
@@ -32,4 +32,11 @@ public class CircularListTest {
         assertEquals(numAdded, circularQueue.lastElement());
     }
 
+    @Test
+    public void testAddToTheFullCircularQueue(){
+        int numAdded = 6;
+        circularQueue.add(numAdded);
+        assertEquals(numAdded, circularQueue.lastElement());
+        assertEquals(MAX_LENGTH, circularQueue.size());
+    }
 }
