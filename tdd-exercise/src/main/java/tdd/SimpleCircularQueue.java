@@ -10,7 +10,7 @@ public class SimpleCircularQueue implements CircularQueue{
 
     @Override
     public void add(int number) {
-        if(circularQueue.size() >= 3){
+        if(size() >= 3){
             remove();
         }
         circularQueue.add(number);
@@ -18,7 +18,7 @@ public class SimpleCircularQueue implements CircularQueue{
 
     @Override
     public int lastElement() {
-        return circularQueue.get(circularQueue.size()-1);
+        return circularQueue.get(size()-1);
     }
 
     @Override

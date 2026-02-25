@@ -15,13 +15,33 @@ package tdd;
  */
 public interface CircularQueue {
 
+    /**
+     * Add new number in CircularQueue
+     * If CircularQueue is full, first remove the oldest number, than add the new one
+     * @param number The number to add
+     */
     void add(int number);
 
+    /**
+     * Get last element of the CircularQueue
+     * @return the last element
+     */
     int lastElement();
 
+    /**
+     * Remove the oldest number if CircularQueue is not empty
+     */
     void remove();
 
+    /**
+     * Get the first element of the CircularQueue
+     * @return the first element
+     */
     int getFirst();
 
+    /**
+     * Get the size of the CircularQueue
+     * @return the size
+     */
     int size();
 }
