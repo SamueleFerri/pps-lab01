@@ -3,6 +3,8 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -38,5 +40,13 @@ public class CircularListTest {
         circularQueue.add(numAdded);
         assertEquals(numAdded, circularQueue.lastElement());
         assertEquals(MAX_LENGTH, circularQueue.size());
+    }
+
+    @Test
+    public void testRemoveFromTheEmptyCircularQueue(){
+        for(int i = 0; i < MAX_LENGTH; i++){
+            circularQueue.remove();
+        }
+        assertThrows(EmptyStackException.class, () -> circularQueue.remove());
     }
 }

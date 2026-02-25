@@ -30,6 +30,7 @@ public interface CircularQueue {
 
     /**
      * Remove the oldest number if CircularQueue is not empty
+     * If empty throw EmptyStackException
      */
     void remove();
 
