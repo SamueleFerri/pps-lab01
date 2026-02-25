@@ -19,4 +19,7 @@ public interface CircularQueue {
 
     int lastElement();
 
+    void remove();
+
+    int getFirst();
 }

@@ -19,8 +19,15 @@ public class CircularListTest {
 
     @Test
     public void testAddToTheCircularQueue(){
-        int num = 6;
-        circularQueue.add(num);
-        assertEquals(num, circularQueue.lastElement());
+        int numAdded = 6;
+        circularQueue.add(numAdded);
+        assertEquals(numAdded, circularQueue.lastElement());
+    }
+
+    @Test
+    public void testRemoveFromTheCircularQueue(){
+        int numRemoved = 5;
+        circularQueue.remove();
+        assertEquals(numRemoved, circularQueue.getFirst());
     }
 }
