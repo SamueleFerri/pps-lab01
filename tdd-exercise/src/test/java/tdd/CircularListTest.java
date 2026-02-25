@@ -18,16 +18,18 @@ public class CircularListTest {
     }
 
     @Test
-    public void testAddToTheCircularQueue(){
-        int numAdded = 6;
-        circularQueue.add(numAdded);
-        assertEquals(numAdded, circularQueue.lastElement());
-    }
-
-    @Test
     public void testRemoveFromTheCircularQueue(){
         int numRemoved = 5;
         circularQueue.remove();
         assertEquals(numRemoved, circularQueue.getFirst());
     }
+
+    @Test
+    public void testAddToTheCircularQueueNotFull(){
+        circularQueue.remove();
+        int numAdded = 6;
+        circularQueue.add(numAdded);
+        assertEquals(numAdded, circularQueue.lastElement());
+    }
+
 }
